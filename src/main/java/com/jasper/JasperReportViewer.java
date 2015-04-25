@@ -5,11 +5,25 @@ import net.sf.jasperreports.view.JasperDesignViewer;
 
 public class JasperReportViewer {
 	private String jrPath;
+	private String reportTemplate;
 	private Boolean isXML;
+	
 	private JasperDesignViewer jasperDesignViewer;
 
 	public void setJrPath(String jrPath){
 		this.jrPath = jrPath;
+	}
+	
+	public String getJrPath(){
+		return this.jrPath;
+	}
+	
+	public void setReportTemplate(String reportTemplate){
+		this.reportTemplate = reportTemplate;
+	}
+	
+	public String getReportTemplate(){
+		return this.reportTemplate;
 	}
 
 	public void setIsXML(Boolean isXML){
@@ -25,14 +39,13 @@ public class JasperReportViewer {
 
 	@SuppressWarnings("static-access")
 	public void viewReport(){
-		System.out.println("Accessing viewReport() method with values jrPath "+this.jrPath);
+		System.out.println("Accessing viewReport() method with values jrPath "+this.jrPath+this.reportTemplate);
 		try {
-			jasperDesignViewer.viewReportDesign(this.jrPath, this.isXML);
+			jasperDesignViewer.viewReportDesign(this.jrPath+this.reportTemplate, this.isXML);
 		} catch (JRException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		//jasperDesignViewer.viewReportDesign(this.jrPath);
+		}		
 	}
 
 }
